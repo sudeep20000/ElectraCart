@@ -1,0 +1,65 @@
+.form_name {
+  font-size: 30px;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.input {
+  border-radius: 7px;
+  padding: 5px;
+  font-size: 17px;
+  border: 1px solid grey;
+  outline: none;
+  background-color: #fff;
+}
+
+.policy {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 15px;
+}
+
+.continue_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(60, 6, 161);
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 17px;
+  height: 40px;
+  width: 170px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.term_condition {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.error {
+  display: flex;
+  gap: 10px;
+  color: red;
+  font-size: 15px;
+}

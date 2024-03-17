@@ -1,0 +1,57 @@
+.form_name {
+  font-size: 30px;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.input {
+  border-radius: 7px;
+  padding: 5px;
+  font-size: 17px;
+  border: 1px solid grey;
+  outline: none;
+  background-color: #fff;
+}
+
+.error {
+  color: red;
+  font-size: 15px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 15px;
+}
+
+.term_condition {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.continue_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: rgb(60, 6, 161);
+  font-size: 17px;
+  height: 40px;
+  width: 100%;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

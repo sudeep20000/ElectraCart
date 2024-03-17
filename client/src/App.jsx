@@ -1,7 +1,12 @@
-import React from "react";
+import { Route, Routes } from "react-router-dom";
+import LoginAndRegisterPage from "./pages/logInAndRegister/LoginAndRegisterPage";
 
 const App = () => {
-  return <div>App</div>;
+  return (
+    <Routes>
+      <Route path="/" element={<LoginAndRegisterPage />} />
+    </Routes>
+  );
 };
 
 export default App;
