@@ -10,6 +10,13 @@ const UserSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 50,
     },
+
+    phone: {
+      type: String,
+      required: [true, "Please provide mobile number"],
+      unique: true,
+    },
+
     email: {
       type: String,
       required: [true, "Please provide email"],
@@ -19,6 +26,7 @@ const UserSchema = new mongoose.Schema(
       ],
       unique: true,
     },
+
     password: {
       type: String,
       required: [true, "Please provide password"],
@@ -36,9 +44,13 @@ UserSchema.pre("save", async function () {
 
 // Schema instance method
 UserSchema.methods.createJWT = function () {
-  return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_LIFETIME,
-  });
+  return jwt.sign(
+    { userId: this._id, userName: this.name },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_LIFETIME,
+    }
+  );
 };
 
 UserSchema.methods.comparePassword = async function (candidatePassword) {

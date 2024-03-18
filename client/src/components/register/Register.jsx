@@ -21,18 +21,21 @@ const LoginForm = () => {
     border: "1px solid red",
   };
 
-  const handleSubmit = async (e) => {
+  const handleContinue = async (e) => {
     e.preventDefault();
 
     if (!user.name || !user.phone || !user.email || !user.password) {
       setError(true);
       toast.error("all fields required", {
-        position: "top-center",
+        position: "top-right",
       });
     } else {
       setLoading(true);
       try {
-        const { data } = await axios.post(`localhost:3000/auth/register`, user);
+        const { data } = await axios.post(
+          `http://localhost:5000/auth/register`,
+          user
+        );
         setLoading(false);
         localStorage.setItem("token", data.token);
         // navigate("/dashboard");
@@ -40,15 +43,16 @@ const LoginForm = () => {
         setLoading(false);
         console.log(error.response.data.msg);
         toast.error(error.response.data.msg, {
-          position: "top-center",
+          position: "top-right",
         });
       }
     }
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleContinue}>
       <p className={styles.form_name}>Create Account</p>
+
       <div className={styles.name}>
         <label htmlFor="name" className={styles.label}>
           Your name
@@ -124,7 +128,7 @@ const LoginForm = () => {
       </p>
 
       <div className={styles.btn}>
-        <button type="submit" className={styles.continue_btn}>
+        <button type="submit" className={styles.continue}>
           {loading ? <Loader /> : "Continue"}
         </button>
       </div>

@@ -17,13 +17,12 @@ const errorMiddleware = require("./middleware/error-handler");
 app.use(cors());
 app.use(express.json());
 
-app.get("/health", (req, res) => {
+app.get("/health", (_, res) => {
   res.status(200).json({
     serverTime: new Date(),
     serverName: "ElectraCart",
   });
 });
-
 app.use("/auth", authRoutes);
 
 app.use(errorMiddleware);

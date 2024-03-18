@@ -8,7 +8,7 @@ import Loader from "../loader/Loader";
 
 const Login = () => {
   // const navigate = useNavigate();
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ logInID: "", password: "" });
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -19,22 +19,25 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!user.email || !user.password) {
+    if (!user.logInID || !user.password) {
       setError(true);
       toast.error("all fields required", {
-        position: "top-center",
+        position: "top-right",
       });
     } else {
       setLoading(true);
       try {
-        const { data } = await axios.post(`localhost:3000/auth/login`, user);
-        setLoading(false);
+        const { data } = await axios.post(
+          `http://localhost:5000/auth/login`,
+          user
+        );
         localStorage.setItem("token", data.token);
+        setLoading(false);
         // navigate("/dashboard");
       } catch (error) {
         setLoading(false);
         toast.error(error.response.data.msg, {
-          position: "top-center",
+          position: "top-right",
         });
       }
     }
@@ -45,18 +48,18 @@ const Login = () => {
       <p className={styles.form_name}>Sign in</p>
 
       <div className={styles.name}>
-        <label htmlFor="email" className={styles.label}>
+        <label htmlFor="logInID" className={styles.label}>
           Enter your email or mobile number
         </label>
         <input
-          type="email"
-          id="email"
+          type="text"
+          id="logInID"
           className={styles.input}
-          value={user.email}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
-          style={error && user.email.length === 0 ? errColor : null}
+          value={user.logInID}
+          onChange={(e) => setUser({ ...user, logInID: e.target.value })}
+          style={error && user.logInID.length === 0 ? errColor : null}
         />
-        {error && user.email.length === 0 && (
+        {error && user.logInID.length === 0 && (
           <p className={styles.error}>*Required Field</p>
         )}
       </div>
@@ -73,13 +76,13 @@ const Login = () => {
           onChange={(e) => setUser({ ...user, password: e.target.value })}
           style={error && user.password.length === 0 ? errColor : null}
         />
-        {error && user.email.length === 0 && (
+        {error && user.password.length === 0 && (
           <p className={styles.error}>*Required Field</p>
         )}
       </div>
 
       <div className={styles.btn}>
-        <button type="submit" className={styles.continue_btn}>
+        <button type="submit" className={styles.continue}>
           {loading ? <Loader /> : "Continue"}
         </button>
       </div>
