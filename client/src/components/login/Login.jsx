@@ -2,12 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import Loader from "../loader/Loader";
 
 const Login = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [user, setUser] = useState({ logInID: "", password: "" });
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,9 +31,10 @@ const Login = () => {
           `http://localhost:5000/auth/login`,
           user
         );
+        localStorage.removeItem("page");
         localStorage.setItem("token", data.token);
         setLoading(false);
-        // navigate("/dashboard");
+        navigate("/");
       } catch (error) {
         setLoading(false);
         toast.error(error.response.data.msg, {

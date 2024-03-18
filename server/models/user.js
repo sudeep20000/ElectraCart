@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please provide mobile number"],
       unique: true,
+      maxlength: 10,
     },
 
     email: {

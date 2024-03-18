@@ -6,12 +6,24 @@ const login = async (req, res) => {
   const { logInID, password } = req.body;
 
   if (!logInID || !password) {
-    throw new BadRequestError("Please provide all Credentials");
+    throw new BadRequestError("Plz provide all Credentials");
   }
 
-  const user = await User.findOne({ logInID });
+  let email;
+  let phone;
+  let user;
+  if (logInID.length === 10) {
+    phone = logInID;
+    user = await User.findOne({ phone });
+  } else {
+    email = logInID;
+    let isContains = email.includes("@");
+    if (isContains) user = await User.findOne({ email });
+    else throw new UnauthenticatedError("Email_ID must contains @");
+  }
+
   if (!user) {
-    throw new UnauthenticatedError("Invalid Credentials");
+    throw new UnauthenticatedError("user not found , plz register");
   }
 
   const isPasswordCorrect = await user.comparePassword(password);

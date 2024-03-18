@@ -2,12 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import Loader from "../loader/Loader";
 
 const LoginForm = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     phone: "",
@@ -37,8 +37,9 @@ const LoginForm = () => {
           user
         );
         setLoading(false);
+        localStorage.removeItem("page");
         localStorage.setItem("token", data.token);
-        // navigate("/dashboard");
+        navigate("/");
       } catch (error) {
         setLoading(false);
         console.log(error.response.data.msg);

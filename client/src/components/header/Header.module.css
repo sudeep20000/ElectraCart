@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5vh;
+  padding: 0 35px;
+  color: #fff;
+  background-color: rgb(49, 2, 87);
+}
+
+.phone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.offer_sec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.empty {
+  height: 18px;
+  width: 1px;
+  background-color: #fff;
+}
+
+.btn_sec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.login_btn {
+  cursor: pointer;
+}
+
+.signup_btn {
+  cursor: pointer;
+}
+
+.logout {
+  padding: 0 20px;
+  cursor: pointer;
+}

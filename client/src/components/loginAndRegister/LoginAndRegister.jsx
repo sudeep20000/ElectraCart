@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Login from "../login/Login";
 import Register from "../register/Register";
 import styles from "./LoginAndRegister.module.css";
+import Footer from "../footer/Footer";
 
 const LoginAndRegister = () => {
   const [tab, setTab] = useState("login");
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const jwtToken = localStorage.getItem("token");
-    if (jwtToken) {
-      navigate("/dashboard");
-    }
-  }, [navigate]);
+    const pageName = localStorage.getItem("page");
+    setTab(pageName);
+  }, []);
 
   return (
     <>
@@ -49,9 +46,7 @@ const LoginAndRegister = () => {
           )}
         </div>
       </div>
-      <footer>
-        <p className={styles.footer}>Musicart | All rights reserved</p>
-      </footer>
+      <Footer />
     </>
   );
 };
