@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { TbPhoneCall } from "react-icons/tb";
 import styles from "./Header.module.css";
 
-const Header = () => {
-  const [isTokenPresent, setIsTokenPresent] = useState(false);
+const Header = ({ isTokenPresent, onSetToken, tabOpen }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isPresent = localStorage.getItem("token");
-    if (isPresent) setIsTokenPresent(true);
-  }, []);
+    const details = JSON.parse(localStorage.getItem("details"));
+    if (!details) return;
+    if (details.token) onSetToken(true);
+  }, [onSetToken]);
 
   const handelLogin = () => {
     navigate("/authenticate");
@@ -22,13 +23,14 @@ const Header = () => {
   };
 
   const handelLogout = () => {
-    setIsTokenPresent(false);
-    localStorage.removeItem("token");
+    localStorage.removeItem("details");
+    onSetToken(false);
   };
 
   return (
     <div className={styles.header}>
       <div className={styles.phone}>
+        <TbPhoneCall size={23} />
         <p className={styles.phone_num}>912121131313</p>
       </div>
 
@@ -49,9 +51,15 @@ const Header = () => {
           </p>
         </div>
       ) : (
-        <p className={styles.logout} onClick={handelLogout}>
-          Logout
-        </p>
+        <>
+          {tabOpen === "seletedItem" ? (
+            <p className={styles.logout} onClick={handelLogout}>
+              Logout
+            </p>
+          ) : (
+            <p className={styles.adjust}></p>
+          )}
+        </>
       )}
     </div>
   );

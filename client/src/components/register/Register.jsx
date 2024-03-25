@@ -38,7 +38,7 @@ const LoginForm = () => {
         );
         setLoading(false);
         localStorage.removeItem("page");
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("details", JSON.stringify(data));
         navigate("/");
       } catch (error) {
         setLoading(false);

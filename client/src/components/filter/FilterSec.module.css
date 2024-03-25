@@ -1,0 +1,110 @@
+.filter_sec {
+  width: 80vw;
+  height: 9%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.filter_container select {
+  background-color: lightgrey;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.view_btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.grid_view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.list_view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter_btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.sort_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort_container select {
+  border: 2px solid lightgray;
+  outline: none;
+  border-radius: 30px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.grid_main_container {
+  width: 80vw;
+  height: 54%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.list_main_container {
+  width: 80vw;
+  height: 54%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.items_grid_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 25px 40px;
+}
+
+.items_list_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.normal_div {
+  display: block;
+}
+
+.failFetch {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}

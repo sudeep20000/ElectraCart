@@ -1,0 +1,169 @@
+.seletedItem_div {
+  height: 80vh;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.back_btn {
+  background-color: #310257;
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.description {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.main_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.product_images_container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 35%;
+}
+
+.main_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #310257;
+  border-radius: 7px;
+}
+
+.main_img img {
+  height: 300px;
+  width: 330;
+}
+
+.secondary_imgs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inner_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+.inner_img img {
+  height: 100px;
+  width: 110px;
+}
+
+.product_details {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  gap: 10px;
+  width: 60%;
+}
+
+.details_sec {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.product_name {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.rating {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.color {
+  font-size: 18px;
+}
+
+.about_container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.features_list {
+  list-style-position: inside;
+}
+
+.available {
+  font-size: 18px;
+}
+
+.available span {
+  font-weight: bold;
+}
+
+.brand_name {
+  font-size: 18px;
+}
+
+.brand_name span {
+  font-weight: bold;
+}
+
+.btn_sec {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+.addBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  padding: 7px 0;
+  font-size: 17px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #ffd600;
+}
+
+.buyNow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  padding: 7px 0;
+  font-size: 17px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #ffb800;
+}

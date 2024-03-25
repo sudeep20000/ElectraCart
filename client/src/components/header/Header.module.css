@@ -5,14 +5,14 @@
   height: 5vh;
   padding: 0 35px;
   color: #fff;
-  background-color: rgb(49, 2, 87);
+  background-color: #310257;
 }
 
 .phone {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .offer_sec {
@@ -44,6 +44,10 @@
 }
 
 .logout {
-  padding: 0 20px;
+  padding: 0 34px;
   cursor: pointer;
+}
+
+.adjust {
+  padding-left: 120px;
 }

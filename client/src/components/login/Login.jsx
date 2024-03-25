@@ -32,7 +32,7 @@ const Login = () => {
           user
         );
         localStorage.removeItem("page");
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("details", JSON.stringify(data));
         setLoading(false);
         navigate("/");
       } catch (error) {

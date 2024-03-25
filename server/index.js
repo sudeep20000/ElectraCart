@@ -8,8 +8,10 @@ const cors = require("cors");
 const connectDB = require("./db/connect");
 
 const authRoutes = require("./routes/auth");
+const publicRoutes = require("./routes/public");
+const privateRoutes = require("./routes/private");
 
-// const authenticateUser = require("./middleware/requireAuth");
+const authenticateUser = require("./middleware/requireAuth");
 
 const notFoundMiddleware = require("./middleware/not-found");
 const errorMiddleware = require("./middleware/error-handler");
@@ -24,6 +26,8 @@ app.get("/health", (_, res) => {
   });
 });
 app.use("/auth", authRoutes);
+app.use("/v1", publicRoutes);
+app.use("/verified", authenticateUser, privateRoutes);
 
 app.use(errorMiddleware);
 app.use(notFoundMiddleware);

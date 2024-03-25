@@ -1,0 +1,30 @@
+.offer {
+  display: flex;
+  height: 25%;
+  width: 80vw;
+  margin: auto;
+  position: relative;
+  border-radius: 13px;
+  background: linear-gradient(to right, #7286b4, #e794ce);
+}
+
+.offer_heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  width: 40%;
+  font-weight: bold;
+  color: #310257;
+}
+
+.offer_heading p {
+  text-align: center;
+}
+
+.offer img {
+  height: 150px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

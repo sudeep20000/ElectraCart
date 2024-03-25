@@ -1,3 +1,87 @@
 .main {
-  height: 89vh;
+  position: relative;
+  height: 80vh;
+}
+
+.feedback_tab {
+  position: fixed;
+  bottom: 55px;
+  right: 145px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.feedback_form {
+  position: absolute;
+  bottom: 75px;
+  right: 50px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  gap: 5px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.feedback_type {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.feedback_type select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+}
+
+.feedback_textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.feedback_textarea textarea {
+  resize: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #f3f3f3;
+}
+
+.submit_btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit_btn {
+  padding: 5px 15px;
+  font-size: 15px;
+  border-radius: 15px;
+  background-color: #310257;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.error {
+  display: flex;
+  gap: 10px;
+  color: red;
+  font-size: 15px;
 }

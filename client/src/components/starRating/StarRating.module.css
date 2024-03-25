@@ -1,0 +1,11 @@
+.rating {
+  display: flex;
+  gap: 5px;
+  color: #ffd600;
+}
+
+.rating span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

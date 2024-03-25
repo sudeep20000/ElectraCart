@@ -1,0 +1,117 @@
+.nav_container {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.logo_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo_title img {
+  height: 30px;
+}
+
+.title {
+  font-size: 25px;
+  color: #310257;
+  font-weight: bold;
+}
+
+.user_details {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 20px;
+  border-radius: 30px;
+  background-color: darkgreen;
+  cursor: pointer;
+}
+
+.cart_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_count {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.user_info {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid lightgray;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dropdown_div {
+  position: absolute;
+  top: 47px;
+  right: -65px;
+  width: 180px;
+  border-radius: 15px;
+  z-index: 1;
+  background-color: #fff;
+  font-size: 15px;
+  border: 2px solid lightgray;
+}
+
+.user_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  padding: 10px 0 8px 0;
+  cursor: default;
+}
+
+.separator {
+  height: 1px;
+  background-color: lightgray;
+}
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0 10px 0;
+}
