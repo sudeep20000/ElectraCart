@@ -1,11 +1,12 @@
 .offer {
   display: flex;
-  height: 25%;
   width: 80vw;
   margin: auto;
   position: relative;
   border-radius: 13px;
   background: linear-gradient(to right, #7286b4, #e794ce);
+  padding: 25px 0;
+  margin-top: 10px;
 }
 
 .offer_heading {
@@ -23,7 +24,7 @@
 }
 
 .offer img {
-  height: 150px;
+  height: 155px;
   position: absolute;
   right: 0;
   bottom: 0;

@@ -25,6 +25,12 @@ const Home = () => {
   const [mount, setMount] = useState(false);
 
   useEffect(() => {
+    const details = JSON.parse(localStorage.getItem("details"));
+    if (!details) return;
+    if (details.token) setIsTokenPresent(true);
+  }, []);
+
+  useEffect(() => {
     const fetchAllProducts = async () => {
       try {
         setIsLoading(true);

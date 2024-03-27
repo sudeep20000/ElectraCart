@@ -1,16 +1,9 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TbPhoneCall } from "react-icons/tb";
 import styles from "./Header.module.css";
 
 const Header = ({ isTokenPresent, onSetToken, tabOpen }) => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const details = JSON.parse(localStorage.getItem("details"));
-    if (!details) return;
-    if (details.token) onSetToken(true);
-  }, [onSetToken]);
 
   const handelLogin = () => {
     navigate("/authenticate");
@@ -24,6 +17,9 @@ const Header = ({ isTokenPresent, onSetToken, tabOpen }) => {
 
   const handelLogout = () => {
     localStorage.removeItem("details");
+    const pathname = window.location.pathname;
+    if (pathname === "/View_Cart" || pathname === "Checkout")
+      navigate("/authenticate");
     onSetToken(false);
   };
 

@@ -87,7 +87,6 @@ const ItemCard = ({
         {isTokenPresent && (
           <div className={styles.add_cart} onClick={(e) => handelAddToCart(e)}>
             <MdAddShoppingCart color="green" size={24} />
-            <ToastContainer />
           </div>
         )}
       </div>
@@ -119,6 +118,7 @@ const ItemCard = ({
           </button>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

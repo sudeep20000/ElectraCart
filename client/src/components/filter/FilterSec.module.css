@@ -68,29 +68,23 @@
 
 .grid_main_container {
   width: 80vw;
-  height: 54%;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .list_main_container {
   width: 80vw;
-  height: 54%;
   margin: auto;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .items_grid_container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 25px 40px;
+  grid-gap: 25px 44px;
 }
 
 .items_list_container {

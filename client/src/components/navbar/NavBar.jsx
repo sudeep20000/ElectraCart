@@ -8,17 +8,22 @@ const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
   const [userName, setUserName] = useState("");
   const [openUserDetails, setOpenUserDetails] = useState(false);
   const navigate = useNavigate();
+  const [path, setPath] = useState("");
   const itemLength = cartItems.length;
 
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
     if (!details) return;
+    if (details && details.userName) setUserName(details.userName);
+  }, []);
 
-    if (details && details.userName) {
-      onSetToken(true);
-      setUserName(details.userName);
-    }
-  }, [onSetToken]);
+  useEffect(() => {
+    const getPathName = () => {
+      const pathname = window.location.pathname;
+      setPath(pathname);
+    };
+    getPathName();
+  }, []);
 
   const getInitials = (username) => {
     const nameParts = username.split(" ");
@@ -36,7 +41,16 @@ const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
   };
 
   const handelOpenCart = () => {
-    navigate("/cart");
+    navigate("/View_Cart");
+  };
+
+  const decodePath = (path) => {
+    let modifiedPath = "";
+    if (path.length === 1) return modifiedPath;
+    if (path.length > 1) {
+      modifiedPath = path.split("_").join(" ");
+    }
+    return modifiedPath;
   };
 
   return (
@@ -47,7 +61,7 @@ const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
             <img src={Images.image1} alt="logo" />
             <p className={styles.title}>Musicart</p>
           </div>
-          <p className={styles.path}>Home</p>
+          <p className={styles.path}>Home {decodePath(path)}</p>
           {isTokenPresent && tabOpen === "default" && (
             <p className={styles.invoice}>Invoice</p>
           )}
