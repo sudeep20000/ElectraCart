@@ -23,8 +23,8 @@
 }
 
 .feedback_form {
-  position: absolute;
-  bottom: 75px;
+  position: fixed;
+  bottom: 110px;
   right: 50px;
   border: 1px solid grey;
   display: flex;

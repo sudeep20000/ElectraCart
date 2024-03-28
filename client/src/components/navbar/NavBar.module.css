@@ -36,6 +36,10 @@
   font-weight: bold;
 }
 
+.invoice {
+  cursor: pointer;
+}
+
 .user_details {
   position: relative;
   display: flex;

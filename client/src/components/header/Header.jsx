@@ -18,7 +18,7 @@ const Header = ({ isTokenPresent, onSetToken, tabOpen }) => {
   const handelLogout = () => {
     localStorage.removeItem("details");
     const pathname = window.location.pathname;
-    if (pathname === "/View_Cart" || pathname === "Checkout")
+    if (pathname === "/View_Cart" || pathname === "/Checkout")
       navigate("/authenticate");
     onSetToken(false);
   };

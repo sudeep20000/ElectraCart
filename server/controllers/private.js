@@ -1,4 +1,5 @@
 const CartItem = require("../models/cart");
+const Invoice = require("../models/invoice");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
 
@@ -80,4 +81,21 @@ const editQuantity = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ productName });
 };
 
-module.exports = { addToCart, getFilteredCartData, getCartData, editQuantity };
+const addInvoice = async (req, res) => {
+  req.body.customerId = req.user.userId;
+
+  const invoice = await Invoice.create({ ...req.body });
+  await CartItem.deleteMany({ addBy: req.user.userId });
+
+  if (!invoice) throw new BadRequestError("fail to add invoice");
+
+  res.status(StatusCodes.CREATED).json({ invoice });
+};
+
+module.exports = {
+  addToCart,
+  getFilteredCartData,
+  getCartData,
+  editQuantity,
+  addInvoice,
+};

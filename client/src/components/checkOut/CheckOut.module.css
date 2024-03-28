@@ -1,0 +1,290 @@
+.main {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.back_btn {
+  background-color: #310257;
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.sec_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.checkout_main_conatiner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50px;
+  width: 100%;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 65%;
+}
+
+.address {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.address_title {
+  color: #b52b00;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.username {
+  color: grey;
+  font-size: 17px;
+}
+
+.textarea_container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.textarea_container textarea {
+  resize: none;
+  outline: none;
+  padding: 7px;
+  font-family: "Roboto";
+}
+
+.horizontal_divider {
+  width: 100%;
+  height: 1px;
+  background-color: grey;
+}
+
+.pyment_mode {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.payment_title {
+  color: #b52b00;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.select_container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.payment_method {
+  padding: 8px 84px;
+  outline: none;
+  font-size: 13px;
+  color: grey;
+}
+
+.reviews {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.review_title {
+  color: #b52b00;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.review_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 42%;
+}
+
+.product_img_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #310257;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.img_container img {
+  height: 70px;
+  width: 70px;
+}
+
+.description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product_name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.product_color {
+  color: grey;
+}
+
+.mini_placeorder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  padding: 8px 15px;
+}
+
+.mini_placeorder button {
+  padding: 9px 7px;
+  font-size: 15px;
+  color: black;
+  background-color: #ffd600;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.total_amount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.total {
+  font-weight: bold;
+  color: #b52b00;
+}
+
+.term_condition {
+  font-size: 13px;
+}
+
+.final_place_order {
+  width: 23vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+}
+
+.first {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.final_place_order button {
+  font-size: 18px;
+  padding: 7px 0;
+  background-color: #ffd600;
+  color: black;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.final_term {
+  font-size: 13px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.orderSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.orderSummary_title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.delivery_details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  color: grey;
+}
+
+.total_order {
+  display: flex;
+  justify-content: space-between;
+  color: #b52b00;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.error {
+  display: flex;
+  gap: 10px;
+  color: red;
+  font-size: 12px;
+}

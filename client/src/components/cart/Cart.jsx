@@ -15,7 +15,6 @@ const Cart = () => {
   const [itemCount, setItemCount] = useState({});
   const [selectedItem, setSelectedItem] = useState("");
   const [index, setIndex] = useState(null);
-  const [tabOpen, setTabOpen] = useState("seletedItem");
   const totalMRP = cartItems?.reduce((total, item) => {
     const quantity = itemCount[item.model];
     return item.price * quantity + total;
@@ -114,17 +113,22 @@ const Cart = () => {
     setSelectedItem(modelName);
   };
 
+  const gotoCheckOut = (e) => {
+    e.preventDefault();
+    navigate("/Checkout");
+  };
+
   return (
     <div className={styles.cart_div}>
       <Header
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
-        tabOpen={tabOpen}
+        tabOpen={"seletedItem"}
       />
       <NavBar
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
-        tabOpen={tabOpen}
+        tabOpen={"seletedItem"}
         cartItems={itemCount ? totalItems(itemCount) : []}
       />
 
@@ -180,7 +184,6 @@ const Cart = () => {
                           )
                         )}
                       </select>
-                      <ToastContainer />
                     </div>
                     <div className={styles.total}>
                       <span>Total</span>
@@ -226,12 +229,18 @@ const Cart = () => {
                   <p>Total Amount</p>
                   <span>₹{totalMRP + convenienceFee}</span>
                 </div>
-                <button className={styles.place_order_btn}>PALCE ORDER</button>
+                <button
+                  className={styles.place_order_btn}
+                  onClick={(e) => gotoCheckOut(e)}
+                >
+                  PALCE ORDER
+                </button>
               </div>
             </div>
           </div>
         )}
       </div>
+      <ToastContainer />
       <Footer />
     </div>
   );

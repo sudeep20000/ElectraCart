@@ -7,9 +7,9 @@ import styles from "./NavBar.module.css";
 const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
   const [userName, setUserName] = useState("");
   const [openUserDetails, setOpenUserDetails] = useState(false);
-  const navigate = useNavigate();
   const [path, setPath] = useState("");
-  const itemLength = cartItems.length;
+  const navigate = useNavigate();
+  const itemLength = cartItems.length || 0;
 
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
@@ -53,6 +53,10 @@ const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
     return modifiedPath;
   };
 
+  const handelGoInvoice = () => {
+    navigate("/Invoice");
+  };
+
   return (
     <div className={styles.nav_container}>
       <div className={styles.navbar}>
@@ -61,12 +65,18 @@ const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
             <img src={Images.image1} alt="logo" />
             <p className={styles.title}>Musicart</p>
           </div>
-          <p className={styles.path}>Home {decodePath(path)}</p>
-          {isTokenPresent && tabOpen === "default" && (
-            <p className={styles.invoice}>Invoice</p>
+          {path !== "/success" && (
+            <>
+              <p className={styles.path}>Home {decodePath(path)}</p>
+              {isTokenPresent && tabOpen === "default" && (
+                <p className={styles.invoice} onClick={handelGoInvoice}>
+                  Invoice
+                </p>
+              )}
+            </>
           )}
         </div>
-        {isTokenPresent && (
+        {isTokenPresent && path !== "/Checkout" && path !== "/success" && (
           <div className={styles.user_details}>
             <div className={styles.cart} onClick={handelOpenCart}>
               <div className={styles.cart_icon}>

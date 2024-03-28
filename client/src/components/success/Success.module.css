@@ -1,0 +1,41 @@
+.main_div {
+  height: 85vh;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid grey;
+  padding: 70px;
+  border-radius: 10px;
+}
+
+.success_msg {
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.result_msg {
+  color: grey;
+  font-size: 18px;
+}
+
+.go_back_home {
+  padding: 12px 100px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #310257;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
