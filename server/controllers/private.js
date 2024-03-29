@@ -81,10 +81,31 @@ const editQuantity = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ productName });
 };
 
+const getInvoiceData = async (req, res) => {
+  const invoiceData = await Invoice.find({
+    customerId: req.user.userId,
+  });
+
+  if (!invoiceData) throw new BadRequestError("no invoice data present");
+
+  res.status(StatusCodes.CREATED).json({ invoiceData });
+};
+
 const addInvoice = async (req, res) => {
+  const { uniqueCartItems } = req.body;
+
+  let filteredCartItems = uniqueCartItems.map((item) => {
+    const { brand, model, color, images } = item;
+    return { brand, model, color, image: images[0] };
+  });
+
   req.body.customerId = req.user.userId;
 
-  const invoice = await Invoice.create({ ...req.body });
+  const invoice = await Invoice.create({
+    ...req.body,
+    uniqueCartItems: filteredCartItems,
+  });
+
   await CartItem.deleteMany({ addBy: req.user.userId });
 
   if (!invoice) throw new BadRequestError("fail to add invoice");
@@ -97,5 +118,6 @@ module.exports = {
   getFilteredCartData,
   getCartData,
   editQuantity,
+  getInvoiceData,
   addInvoice,
 };

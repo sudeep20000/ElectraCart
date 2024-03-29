@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,7 +8,6 @@ import Header from "../header/Header";
 import NavBar from "../navbar/NavBar";
 import styles from "./Cart.module.css";
 import Footer from "../footer/Footer";
-import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);
@@ -123,12 +123,12 @@ const Cart = () => {
       <Header
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
-        tabOpen={"seletedItem"}
+        tabOpen={"selectedItem"}
       />
       <NavBar
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
-        tabOpen={"seletedItem"}
+        tabOpen={"selectedItem"}
         cartItems={itemCount ? totalItems(itemCount) : []}
       />
 

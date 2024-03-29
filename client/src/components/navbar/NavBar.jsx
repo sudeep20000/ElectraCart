@@ -69,9 +69,9 @@ const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
             <>
               <p className={styles.path}>Home {decodePath(path)}</p>
               {isTokenPresent && tabOpen === "default" && (
-                <p className={styles.invoice} onClick={handelGoInvoice}>
+                <span className={styles.invoice} onClick={handelGoInvoice}>
                   Invoice
-                </p>
+                </span>
               )}
             </>
           )}

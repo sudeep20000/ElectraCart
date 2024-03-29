@@ -1,4 +1,4 @@
-import Invoice from "../../../../server/models/invoice";
+import Invoice from "../../components/invoice/Invoice";
 
 const InvoicePage = () => {
   return <Invoice />;

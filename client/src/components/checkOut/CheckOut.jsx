@@ -117,6 +117,7 @@ const CheckOut = () => {
             totalMRP,
             extraCharges: deliveryCharge,
             estimatedDate,
+            uniqueCartItems: cartItems,
           },
           { headers }
         );

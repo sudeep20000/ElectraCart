@@ -1,5 +1,24 @@
 const mongoose = require("mongoose");
 
+const myObjectSchema = new mongoose.Schema({
+  brand: {
+    type: String,
+    required: true,
+  },
+  model: {
+    type: String,
+    required: true,
+  },
+  color: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+});
+
 const invoiceSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -25,6 +44,7 @@ const invoiceSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide estimated date"],
   },
+  uniqueCartItems: [myObjectSchema],
   customerId: {
     type: mongoose.Types.ObjectId,
     ref: "User",
