@@ -74,7 +74,7 @@
     "price": 26990,
     "available": true,
     "reviews": 8000,
-    "rating": 3,
+    "rating": 3.5,
     "images": [
       "https://www.sony.co.in/image/406fdd3cc9e49e28002ad8baef9185c8?fmt=png-alpha",
       "https://www.sony.co.in/image/39c0a2d9e11c8b89037f5466bce94fc4?fmt=png-alpha",
@@ -141,7 +141,7 @@
     "price": 1999,
     "available": true,
     "reviews": 12000,
-    "rating": 3,
+    "rating": 3.5,
     "images": [
       "https://vlebazaar.in/image/cache/catalog/B0856HY85J/boAt-Rockerz-550-Over-Ear-Wireless-Headphone-with-Ergonomic-Aesthetics-Plush-Padded-Earcups-Immersive-Audio-Bluetooth-v50-Upto-20H-Playback-Black-B0856HY85J-550x550.jpg",
       "https://vlebazaar.in/image/cache/catalog/713vSnqDamL._SL1500_-550x550.jpg",
@@ -297,7 +297,7 @@
     "price": 9999,
     "available": true,
     "reviews": 2500,
-    "rating": 3,
+    "rating": 3.5,
     "images": [
       "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697113878/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/302220_3_x4bqgc.png",
       "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697113879/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/302220_cqdcns.png",
@@ -382,7 +382,7 @@
     "price": 999,
     "available": true,
     "reviews": 1700,
-    "rating": 3,
+    "rating": 4,
     "images": [
       "https://m.media-amazon.com/images/I/51uZPW0T6-L._SX569_.jpg",
       "https://m.media-amazon.com/images/I/51mMSRhmP3L._SX569_.jpg",

@@ -3,7 +3,6 @@ import { CiGrid41 } from "react-icons/ci";
 import { BsFillGridFill } from "react-icons/bs";
 import { TfiViewListAlt } from "react-icons/tfi";
 import { FaThList } from "react-icons/fa";
-import { ToastContainer } from "react-toastify";
 import ItemCard from "../itemCard/ItemCard";
 import Loader from "../loader/Loader";
 import styles from "./FilterSec.module.css";
@@ -132,7 +131,6 @@ const FilterSec = ({
             )}
           </div>
         )}
-        <ToastContainer />
       </div>
     </>
   );

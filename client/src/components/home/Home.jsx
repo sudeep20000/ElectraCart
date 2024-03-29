@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
 import { VscFeedback } from "react-icons/vsc";
 import Loader from "../loader/Loader";
 import Header from "../header/Header";
@@ -192,8 +193,10 @@ const Home = () => {
         <SelecteItem
           item={selectedItem}
           handelSeletedItem={handelSeletedItem}
+          handleComponentMount={handleComponentMount}
         />
       )}
+      <ToastContainer />
       <Footer />
     </div>
   );

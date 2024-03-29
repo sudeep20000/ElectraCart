@@ -8,8 +8,8 @@
 
 .feedback_tab {
   position: fixed;
-  bottom: 55px;
-  right: 145px;
+  bottom: 40px;
+  right: 120px;
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -24,8 +24,8 @@
 
 .feedback_form {
   position: fixed;
-  bottom: 110px;
-  right: 50px;
+  bottom: 95px;
+  right: 30px;
   border: 1px solid grey;
   display: flex;
   flex-direction: column;

@@ -1,13 +1,117 @@
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import StarRating from "../../components/starRating/StarRating";
 import styles from "./SelectedItem.module.css";
 
-const SelecteItem = ({ item, handelSeletedItem }) => {
-  useEffect(() => {}, []);
+const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
+  const navigate = useNavigate();
 
   const handelBackToProduct = (e) => {
     e.preventDefault();
     handelSeletedItem({}, "default");
+  };
+
+  const handelAddToCart = async (e) => {
+    e.preventDefault();
+
+    const {
+      about,
+      available,
+      brand,
+      color,
+      features,
+      images,
+      model,
+      price,
+      rating,
+      reviews,
+      type,
+    } = item;
+
+    const details = JSON.parse(localStorage.getItem("details"));
+    if (!details) navigate("/authenticate");
+    const headers = {
+      Authorization: `Bearer ${details.token}`,
+    };
+
+    try {
+      const { data } = await axios.post(
+        `http://localhost:5000/verified/addItem`,
+        {
+          about,
+          available,
+          brand,
+          color,
+          features,
+          images,
+          model,
+          price,
+          rating,
+          reviews,
+          type,
+        },
+        { headers }
+      );
+      handleComponentMount();
+      console.log(`${data.itemName} added to cart`);
+      toast.success(`${data.itemName} added to cart`, {
+        position: "top-center",
+      });
+    } catch (error) {
+      toast.error(error.response.data.msg, {
+        position: "top-center",
+      });
+    }
+  };
+
+  const handelAddToCartAndGoCart = async (e) => {
+    e.preventDefault();
+    const {
+      about,
+      available,
+      brand,
+      color,
+      features,
+      images,
+      model,
+      price,
+      rating,
+      reviews,
+      type,
+    } = item;
+
+    const details = JSON.parse(localStorage.getItem("details"));
+    if (!details) navigate("/authenticate");
+    const headers = {
+      Authorization: `Bearer ${details.token}`,
+    };
+
+    try {
+      await axios.post(
+        `http://localhost:5000/verified/addItem`,
+        {
+          about,
+          available,
+          brand,
+          color,
+          features,
+          images,
+          model,
+          price,
+          rating,
+          reviews,
+          type,
+        },
+        { headers }
+      );
+      navigate("/View_Cart");
+    } catch (error) {
+      toast.error(error.response.data.msg, {
+        position: "top-center",
+      });
+    }
   };
 
   return (
@@ -67,8 +171,18 @@ const SelecteItem = ({ item, handelSeletedItem }) => {
             </p>
           </div>
           <div className={styles.btn_sec}>
-            <button className={styles.addBtn}>Add to cart</button>
-            <button className={styles.buyNow}>Buy Now</button>
+            <button
+              className={styles.addBtn}
+              onClick={(e) => handelAddToCart(e)}
+            >
+              Add to cart
+            </button>
+            <button
+              className={styles.buyNow}
+              onClick={(e) => handelAddToCartAndGoCart(e)}
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
