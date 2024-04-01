@@ -5,8 +5,9 @@ import Images from "../../images/Images";
 import Header from "../header/Header";
 import NavBar from "../navbar/NavBar";
 import Footer from "../footer/Footer";
-import styles from "./Invoice.module.css";
+import BASE_URL from "../../service/helper";
 import Loader from "../loader/Loader";
+import styles from "./Invoice.module.css";
 
 const Invoice = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);
@@ -34,10 +35,9 @@ const Invoice = () => {
 
     const fetchAllCartItem = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/verified/cartItems`,
-          { headers }
-        );
+        const { data } = await axios.get(`${BASE_URL}/verified/cartItems`, {
+          headers,
+        });
         setCartItems(data.cartItem);
       } catch (error) {
         console.log(error);
@@ -56,10 +56,9 @@ const Invoice = () => {
 
     const fetchInvoiceData = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/verified/invoice`,
-          { headers }
-        );
+        const { data } = await axios.get(`${BASE_URL}/verified/invoice`, {
+          headers,
+        });
         setLoading(false);
         setInvoiceData(data.invoiceData);
         console.log(data.invoiceData);

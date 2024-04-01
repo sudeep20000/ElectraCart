@@ -8,8 +8,9 @@ import Loader from "../loader/Loader";
 import Header from "../header/Header";
 import NavBar from "../navbar/NavBar";
 import Footer from "../footer/Footer";
-import styles from "./Cart.module.css";
+import BASE_URL from "../../service/helper";
 import Images from "../../images/Images";
+import styles from "./Cart.module.css";
 
 const Cart = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);
@@ -47,7 +48,7 @@ const Cart = () => {
     const fetchAllCartItem = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/verified/filteredCartItems`,
+          `${BASE_URL}/verified/filteredCartItems`,
           { headers }
         );
         const { countsObj, uniqueArray } = data.duplicatesCount;
@@ -74,7 +75,7 @@ const Cart = () => {
     const editProductQuantity = async () => {
       try {
         const { data } = await axios.post(
-          `http://localhost:5000/verified/editProductQuantity`,
+          `${BASE_URL}/verified/editProductQuantity`,
           {
             productName: selectedItem,
             countObj: itemCount,
@@ -268,7 +269,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// toast.error(error.response.data.msg, {
-//   position: "top-center",
-// });

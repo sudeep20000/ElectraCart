@@ -9,8 +9,9 @@ import SearchBar from "../searchbar/SearchBar";
 import FilterSec from "../filter/FilterSec";
 import SelecteItem from "../selectedItem/SelectedItem";
 import Footer from "../footer/Footer";
-import styles from "./Home.module.css";
+import BASE_URL from "../../service/helper";
 import Images from "../../images/Images";
+import styles from "./Home.module.css";
 
 const Home = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);
@@ -38,7 +39,7 @@ const Home = () => {
       setIsLoading(true);
 
       try {
-        const { data } = await axios.get("http://localhost:5000/v1/products", {
+        const { data } = await axios.get(`${BASE_URL}/v1/products`, {
           params: filteredObj,
         });
         setIsLoading(false);
@@ -62,10 +63,9 @@ const Home = () => {
     };
     const fetchAllCartItems = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/verified/cartItems`,
-          { headers }
-        );
+        const { data } = await axios.get(`${BASE_URL}/verified/cartItems`, {
+          headers,
+        });
         setCartItems(data.cartItem);
         console.log(data.cartItem);
       } catch (error) {
@@ -115,11 +115,9 @@ const Home = () => {
       setLoading(false);
     } else {
       try {
-        await axios.post(
-          `http://localhost:5000/verified/addFeedback`,
-          feedback,
-          { headers }
-        );
+        await axios.post(`${BASE_URL}/verified/addFeedback`, feedback, {
+          headers,
+        });
         setFeedback({ type: "", text: "" });
         setError(false);
         setIsOpenFrom(false);

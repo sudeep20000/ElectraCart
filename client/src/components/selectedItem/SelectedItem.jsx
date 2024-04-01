@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import StarRating from "../../components/starRating/StarRating";
+import BASE_URL from "../../service/helper";
 import styles from "./SelectedItem.module.css";
 
 const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
@@ -43,7 +44,7 @@ const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
 
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/verified/addItem`,
+        `${BASE_URL}/verified/addItem`,
         {
           about,
           available,
@@ -98,7 +99,7 @@ const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
 
     try {
       await axios.post(
-        `http://localhost:5000/verified/addItem`,
+        `${BASE_URL}/verified/addItem`,
         {
           about,
           available,

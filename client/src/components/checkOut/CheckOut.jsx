@@ -5,8 +5,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../header/Header";
 import NavBar from "../navbar/NavBar";
-import styles from "./CheckOut.module.css";
 import Footer from "../footer/Footer";
+import BASE_URL from "../../service/helper";
+import styles from "./CheckOut.module.css";
 
 const daysArray = [
   "Sunday",
@@ -57,7 +58,7 @@ const CheckOut = () => {
     const fetchAllCartItem = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/verified/filteredCartItems`,
+          `${BASE_URL}/verified/filteredCartItems`,
           { headers }
         );
         const { countsObj, uniqueArray } = data.duplicatesCount;
@@ -113,7 +114,7 @@ const CheckOut = () => {
           position: "top-center",
         });
         const { data } = await axios.post(
-          `http://localhost:5000/verified/addInvoiceData`,
+          `${BASE_URL}/verified/addInvoiceData`,
           {
             name: userName,
             address,

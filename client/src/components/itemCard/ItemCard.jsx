@@ -2,6 +2,7 @@ import axios from "axios";
 import { MdAddShoppingCart } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../service/helper";
 import styles from "./ItemCard.module.css";
 
 const ItemCard = ({
@@ -35,7 +36,7 @@ const ItemCard = ({
 
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/verified/addItem`,
+        `${BASE_URL}/verified/addItem`,
         {
           about,
           available,

@@ -3,8 +3,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import styles from "./Login.module.css";
 import Loader from "../loader/Loader";
+import BASE_URL from "../../service/helper";
+import styles from "./Login.module.css";
 
 const Login = ({ handelSetTab }) => {
   const navigate = useNavigate();
@@ -32,10 +33,7 @@ const Login = ({ handelSetTab }) => {
     } else {
       setLoading(true);
       try {
-        const { data } = await axios.post(
-          `http://localhost:5000/auth/login`,
-          user
-        );
+        const { data } = await axios.post(`${BASE_URL}/auth/login`, user);
         localStorage.removeItem("page");
         localStorage.setItem("details", JSON.stringify(data));
         setLoading(false);

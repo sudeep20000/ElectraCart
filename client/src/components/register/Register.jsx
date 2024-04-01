@@ -3,8 +3,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import styles from "./Register.module.css";
+import BASE_URL from "../../service/helper";
 import Loader from "../loader/Loader";
+import styles from "./Register.module.css";
 
 const LoginForm = ({ handelSetTab }) => {
   const navigate = useNavigate();
@@ -37,10 +38,7 @@ const LoginForm = ({ handelSetTab }) => {
     } else {
       setLoading(true);
       try {
-        const { data } = await axios.post(
-          `http://localhost:5000/auth/register`,
-          user
-        );
+        const { data } = await axios.post(`${BASE_URL}/auth/register`, user);
         setLoading(false);
         localStorage.removeItem("page");
         localStorage.setItem("details", JSON.stringify(data));
