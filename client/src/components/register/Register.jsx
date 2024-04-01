@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,10 +56,20 @@ const LoginForm = ({ handelSetTab }) => {
 
   return (
     <div className={styles.outer_div}>
+      {window.screen.width >= 320 && window.screen.width <= 425 && (
+        <p className={styles.welcome}>Welcome</p>
+      )}
       <div className={styles.inner_div}>
         <div className={styles.form_container}>
           <form className={styles.form} onSubmit={handleContinue}>
-            <p className={styles.form_name}>Create Account</p>
+            {window.screen.width >= 320 && window.screen.width <= 425 ? (
+              <div className={styles.query_container}>
+                <p className={styles.form_name}>Create Account.</p>
+                <p className={styles.query}>Don't have an account?</p>
+              </div>
+            ) : (
+              <p className={styles.form_name}>Create Account</p>
+            )}
 
             <div className={styles.name}>
               <label htmlFor="name" className={styles.label}>
@@ -149,7 +160,7 @@ const LoginForm = ({ handelSetTab }) => {
         </div>
       </div>
       <div className={styles.sign_in_msg}>
-        <p>Already have an account</p>
+        <p>Already have an account?</p>
         <p className={styles.sign_in} onClick={(e) => handelClickSetTab(e)}>
           Sign in
         </p>

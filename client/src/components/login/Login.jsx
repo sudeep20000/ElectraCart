@@ -49,10 +49,20 @@ const Login = ({ handelSetTab }) => {
 
   return (
     <div className={styles.outer_div}>
+      {window.screen.width >= 320 && window.screen.width <= 425 && (
+        <p className={styles.welcome}>Welcome</p>
+      )}
       <div className={styles.inner_div}>
         <div className={styles.form_container}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <p className={styles.form_name}>Sign in</p>
+            {window.screen.width >= 320 && window.screen.width <= 425 ? (
+              <div className={styles.query_container}>
+                <p className={styles.sign_in}>Sign in.</p>
+                <p className={styles.query}>Already a customer?</p>
+              </div>
+            ) : (
+              <p className={styles.form_name}>Sign in</p>
+            )}
 
             <div className={styles.name}>
               <label htmlFor="logInID" className={styles.label}>
