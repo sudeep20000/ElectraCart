@@ -1,3 +1,28 @@
+.outer_div {
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 32%;
+}
+
+.inner_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid grey;
+  border-radius: 7px;
+  padding: 20px;
+}
+
+.form_container {
+  display: flex;
+  justify-content: center;
+}
+
 .form_name {
   font-size: 30px;
 }
@@ -6,7 +31,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 3px;
+  gap: 2px;
   margin-top: 10px;
 }
 
@@ -22,11 +47,6 @@
   border: 1px solid grey;
   outline: none;
   background-color: #fff;
-}
-
-.error {
-  color: red;
-  font-size: 15px;
 }
 
 .btn {
@@ -54,4 +74,42 @@
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.para {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.empty {
+  height: 2px;
+  width: 33%;
+  background-color: grey;
+}
+
+.para p {
+  font-size: 16px;
+  width: 33%;
+  text-align: center;
+}
+
+.goto_register {
+  width: 100%;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid grey;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.active {
+  background-color: lightgray;
+}
+
+.error {
+  color: red;
+  font-size: 11px;
 }

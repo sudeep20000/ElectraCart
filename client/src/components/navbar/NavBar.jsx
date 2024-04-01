@@ -4,7 +4,13 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import Images from "../../images/Images";
 import styles from "./NavBar.module.css";
 
-const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
+const NavBar = ({
+  isTokenPresent,
+  onSetToken,
+  tabOpen,
+  cartItems,
+  selectedItem,
+}) => {
   const [userName, setUserName] = useState("");
   const [openUserDetails, setOpenUserDetails] = useState(false);
   const [path, setPath] = useState("");
@@ -46,10 +52,11 @@ const NavBar = ({ isTokenPresent, onSetToken, tabOpen, cartItems }) => {
 
   const decodePath = (path) => {
     let modifiedPath = "";
-    if (path.length === 1) return modifiedPath;
-    if (path.length > 1) {
-      modifiedPath = path.split("_").join(" ");
-    }
+    if (path.length === 1 && tabOpen === "default") return modifiedPath;
+    if (path.length === 1 && tabOpen === "selectedItem")
+      return `/${selectedItem.brand} ${selectedItem.model}`;
+
+    if (path.length > 1) modifiedPath = path.split("_").join(" ");
     return modifiedPath;
   };
 

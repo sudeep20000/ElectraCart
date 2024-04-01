@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {
+  addFeedBack,
   addToCart,
   getFilteredCartData,
   getCartData,
@@ -9,6 +10,7 @@ const {
   addInvoice,
 } = require("../controllers/private");
 
+router.route("/addFeedback").post(addFeedBack);
 router.route("/cartItems").get(getCartData);
 router.route("/filteredCartItems").get(getFilteredCartData);
 router.route("/addItem").post(addToCart);

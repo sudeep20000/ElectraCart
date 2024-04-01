@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// const paginate = require("mongoose-paginate-v2");
 
 const productSchema = new mongoose.Schema({
   brand: {
@@ -8,6 +9,10 @@ const productSchema = new mongoose.Schema({
   model: {
     type: String,
     required: [true, "Please provide model name"],
+  },
+  productName: {
+    type: String,
+    required: [true, "Please provide product name"],
   },
   type: {
     type: String,
@@ -50,5 +55,7 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please provide short description"],
   },
 });
+
+// productSchema.plugin(paginate);
 
 module.exports = mongoose.model("Product", productSchema);

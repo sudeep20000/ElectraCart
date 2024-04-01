@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Images from "../../images/Images";
 import Login from "../login/Login";
 import Register from "../register/Register";
 import styles from "./LoginAndRegister.module.css";
@@ -12,42 +13,26 @@ const LoginAndRegister = () => {
     setTab(pageName);
   }, []);
 
+  const handelSetTab = (value) => {
+    setTab(value);
+  };
+
   return (
-    <>
+    <div className={styles.root}>
       <div className={styles.main_container}>
-        <div className={styles.logo}>Musicart</div>
-        <div className={styles.outer_div}>
-          <div className={styles.inner_div}>
-            <div className={styles.form_container}>
-              {tab === "register" ? <Register /> : <Login />}
-            </div>
-          </div>
-          {tab === "login" && (
-            <div className={styles.para}>
-              <div className={styles.empty}></div>
-              <p>New to Musicart?</p>
-              <div className={styles.empty}></div>
-            </div>
-          )}
-          {tab === "register" ? (
-            <div className={styles.sign_in_msg}>
-              <p>Already have an account</p>
-              <p className={styles.sign_in} onClick={() => setTab("login")}>
-                Sign in
-              </p>
-            </div>
-          ) : (
-            <button
-              onClick={() => setTab("register")}
-              className={styles.goto_register}
-            >
-              Create your Musicart account
-            </button>
-          )}
+        <div className={styles.logo}>
+          <img src={Images.image1} alt="icon" />
+          <span>Musicart</span>
         </div>
+
+        {tab === "register" ? (
+          <Register handelSetTab={handelSetTab} />
+        ) : (
+          <Login handelSetTab={handelSetTab} />
+        )}
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

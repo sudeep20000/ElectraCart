@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -6,6 +7,7 @@ import StarRating from "../../components/starRating/StarRating";
 import styles from "./SelectedItem.module.css";
 
 const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
+  const [selectedImage, setSelectedImage] = useState(item.images[0]);
   const navigate = useNavigate();
 
   const handelBackToProduct = (e) => {
@@ -31,7 +33,10 @@ const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
     } = item;
 
     const details = JSON.parse(localStorage.getItem("details"));
-    if (!details) navigate("/authenticate");
+    if (!details) {
+      navigate("/authenticate");
+      return;
+    }
     const headers = {
       Authorization: `Bearer ${details.token}`,
     };
@@ -83,7 +88,10 @@ const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
     } = item;
 
     const details = JSON.parse(localStorage.getItem("details"));
-    if (!details) navigate("/authenticate");
+    if (!details) {
+      navigate("/authenticate");
+      return;
+    }
     const headers = {
       Authorization: `Bearer ${details.token}`,
     };
@@ -114,6 +122,14 @@ const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
     }
   };
 
+  const handleImageClick = (src) => {
+    if (src === selectedImage) {
+      setSelectedImage(item.images[0]);
+      return;
+    }
+    setSelectedImage(src);
+  };
+
   return (
     <div className={styles.seletedItem_div}>
       <button className={styles.back_btn} onClick={handelBackToProduct}>
@@ -123,18 +139,29 @@ const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
       <div className={styles.main_container}>
         <div className={styles.product_images_container}>
           <div className={styles.main_img}>
-            <img src={item.images[0]} alt={item.model} />
+            <img src={selectedImage} alt={item.model} />
           </div>
-
           <div className={styles.secondary_imgs}>
             <div className={styles.inner_img}>
-              <img src={item.images[1]} alt={item.model} />
+              <img
+                src={item.images[1]}
+                alt={item.model}
+                onClick={() => handleImageClick(item.images[1])}
+              />
             </div>
             <div className={styles.inner_img}>
-              <img src={item.images[2]} alt={item.model} />
+              <img
+                src={item.images[2]}
+                alt={item.model}
+                onClick={() => handleImageClick(item.images[2])}
+              />
             </div>
             <div className={styles.inner_img}>
-              <img src={item.images[3]} alt={item.model} />
+              <img
+                src={item.images[3]}
+                alt={item.model}
+                onClick={() => handleImageClick(item.images[3])}
+              />
             </div>
           </div>
         </div>

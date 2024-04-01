@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 53px;
 }
 
 .feedback_tab {
@@ -22,6 +22,10 @@
   background-color: #fff;
 }
 
+.feedback_tab img {
+  height: 30px;
+}
+
 .feedback_form {
   position: fixed;
   bottom: 95px;
@@ -32,7 +36,7 @@
   justify-content: center;
   border-radius: 10px;
   gap: 5px;
-  padding: 10px;
+  padding: 15px;
   background-color: #fff;
 }
 
@@ -50,6 +54,8 @@
   padding: 5px 10px;
   border-radius: 5px;
   background-color: #f3f3f3;
+  outline: none;
+  color: grey;
 }
 
 .feedback_textarea {
@@ -63,6 +69,8 @@
   padding: 5px 10px;
   border-radius: 5px;
   outline: none;
+  font-family: "Roboto";
+  color: grey;
   background-color: #f3f3f3;
 }
 
@@ -80,11 +88,12 @@
   color: #fff;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .error {
   display: flex;
   gap: 10px;
   color: red;
-  font-size: 15px;
+  font-size: 11px;
 }

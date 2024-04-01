@@ -1,7 +1,18 @@
 const CartItem = require("../models/cart");
 const Invoice = require("../models/invoice");
+const Feedback = require("../models/feedback");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
+
+const addFeedBack = async (req, res) => {
+  const { text, type } = req.body;
+  if (!text || !type)
+    throw new BadRequestError("plz provide feedback or feedback type");
+  req.body.addBy = req.user.userId;
+  const feedback = await Feedback.create({ ...req.body });
+  if (!feedback) throw new BadRequestError("fail to add");
+  res.status(StatusCodes.CREATED).json({ feedback });
+};
 
 const getCartData = async (req, res) => {
   const cartItem = await CartItem.find({ addBy: req.user.userId });
@@ -52,7 +63,7 @@ const addToCart = async (req, res) => {
   const itemCount = await CartItem.find({ model });
   if (itemCount.length >= 8)
     throw new BadRequestError(
-      `exceeded maximum quantity limit for item: ${brand} ${model}`
+      `Maximum quantity limit exceeded for ${brand} ${model}`
     );
 
   req.body.addBy = req.user.userId;
@@ -114,6 +125,7 @@ const addInvoice = async (req, res) => {
 };
 
 module.exports = {
+  addFeedBack,
   addToCart,
   getFilteredCartData,
   getCartData,

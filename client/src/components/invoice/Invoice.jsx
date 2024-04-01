@@ -6,6 +6,7 @@ import Header from "../header/Header";
 import NavBar from "../navbar/NavBar";
 import Footer from "../footer/Footer";
 import styles from "./Invoice.module.css";
+import Loader from "../loader/Loader";
 
 const Invoice = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);
@@ -14,6 +15,7 @@ const Invoice = () => {
   const [tabOpen, setTabOpen] = useState("selectedItem");
   const [ind, setInd] = useState(null);
   const [selectedInd, setSelectedInd] = useState(0);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,9 +60,11 @@ const Invoice = () => {
           `http://localhost:5000/verified/invoice`,
           { headers }
         );
+        setLoading(false);
         setInvoiceData(data.invoiceData);
         console.log(data.invoiceData);
       } catch (error) {
+        setLoading(false);
         console.log(error);
       }
     };
@@ -117,29 +121,43 @@ const Invoice = () => {
             <span className={styles.title}>My Invoices</span>
           </div>
 
-          <div className={styles.invoice_container}>
-            {invoiceData.map((obj, i) => (
-              <div key={i} className={styles.main_card}>
-                <div className={styles.list_card}>
-                  <div className={styles.left}>
-                    <img src={Images.image4} alt="icon" />
-                    <div className={styles.user_info}>
-                      <p className={styles.userName}>{obj.name}</p>
-                      <p className={styles.address}>{obj.address}</p>
-                    </div>
-                  </div>
-                  <span
-                    className={styles.view_invoice}
-                    onClick={() => handelChangeTabAndSetIndValue(i)}
-                  >
-                    View Invoice
-                  </span>
-                </div>
+          {loading ? (
+            <div className={styles.loader_container}>
+              <Loader />
+            </div>
+          ) : (
+            <div className={styles.invoice_container}>
+              {invoiceData.length > 0 ? (
+                <>
+                  {invoiceData.map((obj, i) => (
+                    <div key={i} className={styles.main_card}>
+                      <div className={styles.list_card}>
+                        <div className={styles.left}>
+                          <img src={Images.image4} alt="icon" />
+                          <div className={styles.user_info}>
+                            <p className={styles.userName}>{obj.name}</p>
+                            <p className={styles.address}>{obj.address}</p>
+                          </div>
+                        </div>
+                        <span
+                          className={styles.view_invoice}
+                          onClick={() => handelChangeTabAndSetIndValue(i)}
+                        >
+                          View Invoice
+                        </span>
+                      </div>
 
-                <div className={styles.horizontal_divider}></div>
-              </div>
-            ))}
-          </div>
+                      <div className={styles.horizontal_divider}></div>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <span className={styles.empty_invoice}>
+                  <img src={Images.image6} alt="no invoice pic" />
+                </span>
+              )}
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles.different_main}>
@@ -158,7 +176,7 @@ const Invoice = () => {
             <div className={styles.user}>
               <div className={styles.address}>
                 <p className={styles.address_title}>1. Delivery address</p>
-                <div className={styles.user_info}>
+                <div className={styles.user_info_individual}>
                   <p className={styles.username}>{invoiceData[ind]?.name}</p>
                   <div className={styles.textarea_container}>
                     <textarea

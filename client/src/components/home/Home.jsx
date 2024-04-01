@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
-import { VscFeedback } from "react-icons/vsc";
-import Loader from "../loader/Loader";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../header/Header";
 import NavBar from "../navbar/NavBar";
 import Offer from "../offer/Offer";
@@ -11,13 +10,16 @@ import FilterSec from "../filter/FilterSec";
 import SelecteItem from "../selectedItem/SelectedItem";
 import Footer from "../footer/Footer";
 import styles from "./Home.module.css";
+import Images from "../../images/Images";
 
 const Home = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);
   const [products, setProducts] = useState([]);
+  const [filteredObj, setFilteredObj] = useState({});
   const [cartItems, setCartItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [isFound, setIsFound] = useState(null);
   const [feedback, setFeedback] = useState({ type: "", text: "" });
   const [isOpenForm, setIsOpenFrom] = useState(false);
   const [error, setError] = useState(false);
@@ -32,21 +34,25 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const fetchAllProducts = async () => {
+    const fetchProducts = async () => {
+      setIsLoading(true);
+
       try {
-        setIsLoading(true);
-        const { data } = await axios.get(`http://localhost:5000/v1/products`);
+        const { data } = await axios.get("http://localhost:5000/v1/products", {
+          params: filteredObj,
+        });
+        setIsLoading(false);
+        if (data.products.length > 0) setIsFound(true);
+        else setIsFound(false);
         setProducts(data.products);
         console.log(data.products);
-        setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        console.error(error);
         setIsLoading(false);
-        setIsSuccess(false);
       }
     };
-    fetchAllProducts();
-  }, []);
+    fetchProducts();
+  }, [filteredObj]);
 
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
@@ -80,6 +86,7 @@ const Home = () => {
   const handelSeletedItem = (item, activeTab) => {
     setSelectedItem(item);
     setTabOpen(activeTab);
+    setFilteredObj({});
   };
 
   const handleComponentMount = () => {
@@ -87,27 +94,59 @@ const Home = () => {
   };
 
   const handelClickFeedBackTab = () => {
+    setError(false);
     setIsOpenFrom((prev) => !prev);
   };
 
   const handleSubmitFeedback = async (e) => {
     e.preventDefault();
 
+    const details = JSON.parse(localStorage.getItem("details"));
+    const headers = {
+      Authorization: `Bearer ${details.token}`,
+    };
+
+    setLoading(true);
     if (!feedback.type || !feedback.text) {
       setError(true);
+      toast.error("All fields required", {
+        position: "top-center",
+      });
+      setLoading(false);
     } else {
-      // setIsLoading(true);
-      // try {
-      //   const { data } = await axios.post(
-      //     `http://localhost:5000/auth/login`,
-      //     feedback
-      //   );
-      //   setIsLoading(false);
-      // } catch (error) {
-      //   setIsLoading(false);
-      //   console.log(error);
-      // }
+      try {
+        await axios.post(
+          `http://localhost:5000/verified/addFeedback`,
+          feedback,
+          { headers }
+        );
+        setFeedback({ type: "", text: "" });
+        setError(false);
+        setIsOpenFrom(false);
+        setLoading(false);
+        toast.success(`Thank you for your feeback`, {
+          position: "top-center",
+        });
+      } catch (error) {
+        toast.error(error, {
+          position: "top-center",
+        });
+        setError(false);
+        setLoading(false);
+      }
     }
+  };
+
+  const handelChangeFeedbackType = (e) => {
+    setFeedback({ ...feedback, type: e.target.value });
+  };
+
+  const handelChangeFeedback = (e) => {
+    setFeedback({ ...feedback, text: e.target.value });
+  };
+
+  const handelSetFilterObj = (filterObj) => {
+    setFilteredObj(filterObj);
   };
 
   return (
@@ -122,15 +161,21 @@ const Home = () => {
         onSetToken={handelTokenPresent}
         tabOpen={tabOpen}
         cartItems={cartItems}
+        selectedItem={selectedItem}
       />
       {tabOpen === "default" && (
         <div className={styles.main}>
           <Offer />
-          <SearchBar />
+          <SearchBar
+            filteredObj={filteredObj}
+            handelSetFilterObj={handelSetFilterObj}
+          />
           <FilterSec
             isLoading={isLoading}
-            isSuccess={isSuccess}
             products={products}
+            filteredObj={filteredObj}
+            isFound={isFound}
+            handelSetFilterObj={handelSetFilterObj}
             isTokenPresent={isTokenPresent}
             handelSeletedItem={handelSeletedItem}
             handleComponentMount={handleComponentMount}
@@ -140,7 +185,7 @@ const Home = () => {
               className={styles.feedback_tab}
               onClick={handelClickFeedBackTab}
             >
-              <VscFeedback size={24} />
+              <img src={Images.image7} alt="feedbackIcon" />
             </div>
           )}
           {isOpenForm && (
@@ -152,6 +197,8 @@ const Home = () => {
                 <label className={styles.label}>Type of feedback</label>
                 <select
                   style={error && feedback.type.length === 0 ? errColor : null}
+                  value={feedback.type}
+                  onChange={(e) => handelChangeFeedbackType(e)}
                 >
                   <option value="" hidden>
                     Choose the type
@@ -172,6 +219,8 @@ const Home = () => {
                 <textarea
                   cols={25}
                   rows={8}
+                  value={feedback.text}
+                  onChange={(e) => handelChangeFeedback(e)}
                   placeholder="Type your feedback"
                   style={error && feedback.text.length === 0 ? errColor : null}
                 />
@@ -182,7 +231,7 @@ const Home = () => {
 
               <div className={styles.submit_btn_container}>
                 <button type="submit" className={styles.submit_btn}>
-                  {isLoading ? <Loader /> : "Submit"}
+                  {loading ? "..." : "Submit"}
                 </button>
               </div>
             </form>

@@ -1,87 +1,31 @@
+.root {
+  height: 100vh;
+  width: 100vw;
+}
+
 .main_container {
   height: 95vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 20px;
-  margin: auto;
 }
 
 .logo {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.logo span {
   text-align: center;
   font-size: 35px;
   color: rgb(60, 6, 161);
   font-weight: bold;
-}
-
-.outer_div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  width: 32%;
-}
-
-.inner_div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid grey;
-  border-radius: 7px;
-  padding: 20px;
-}
-
-.form_container {
-  display: flex;
-  justify-content: center;
-}
-
-.para {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.empty {
-  height: 2px;
-  width: 33%;
-  background-color: grey;
-}
-
-.para p {
-  font-size: 16px;
-  width: 33%;
-  text-align: center;
-}
-
-.sign_in_msg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-weight: bold;
-}
-
-.sign_in {
-  text-decoration: underline;
-  font-weight: normal;
-  cursor: pointer;
-}
-
-.goto_register {
-  width: 100%;
-  font-size: 15px;
-  padding: 10px;
-  border-radius: 7px;
-  border: 2px solid grey;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.active {
-  background-color: lightgray;
 }

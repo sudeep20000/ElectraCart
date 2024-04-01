@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import Loader from "../loader/Loader";
 
-const Login = () => {
+const Login = ({ handelSetTab }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({ logInID: "", password: "" });
   const [error, setError] = useState(false);
@@ -16,12 +16,17 @@ const Login = () => {
     border: "1px solid red",
   };
 
+  const handelClickSetTab = (e) => {
+    e.preventDefault();
+    handelSetTab("register");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!user.logInID || !user.password) {
       setError(true);
-      toast.error("all fields required", {
+      toast.error("All fields required", {
         position: "top-right",
       });
     } else {
@@ -45,55 +50,72 @@ const Login = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <p className={styles.form_name}>Sign in</p>
+    <div className={styles.outer_div}>
+      <div className={styles.inner_div}>
+        <div className={styles.form_container}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <p className={styles.form_name}>Sign in</p>
 
-      <div className={styles.name}>
-        <label htmlFor="logInID" className={styles.label}>
-          Enter your email or mobile number
-        </label>
-        <input
-          type="text"
-          id="logInID"
-          className={styles.input}
-          value={user.logInID}
-          onChange={(e) => setUser({ ...user, logInID: e.target.value })}
-          style={error && user.logInID.length === 0 ? errColor : null}
-        />
-        {error && user.logInID.length === 0 && (
-          <p className={styles.error}>*Required Field</p>
-        )}
+            <div className={styles.name}>
+              <label htmlFor="logInID" className={styles.label}>
+                Enter your email or mobile number
+              </label>
+              <input
+                type="text"
+                id="logInID"
+                className={styles.input}
+                value={user.logInID}
+                onChange={(e) => setUser({ ...user, logInID: e.target.value })}
+                style={error && user.logInID.length === 0 ? errColor : null}
+              />
+              {error && user.logInID.length === 0 && (
+                <p className={styles.error}>*Required Field</p>
+              )}
+            </div>
+
+            <div className={styles.name}>
+              <label htmlFor="password" className={styles.label}>
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                className={styles.input}
+                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                style={error && user.password.length === 0 ? errColor : null}
+              />
+              {error && user.password.length === 0 && (
+                <p className={styles.error}>*Required Field</p>
+              )}
+            </div>
+
+            <div className={styles.btn}>
+              <button type="submit" className={styles.continue}>
+                {loading ? <Loader /> : "Continue"}
+              </button>
+            </div>
+
+            <p className={styles.term_condition}>
+              By continuing, you agree to Musicart privacy notice and conditions
+              of use
+            </p>
+            <ToastContainer />
+          </form>
+        </div>
       </div>
-
-      <div className={styles.name}>
-        <label htmlFor="password" className={styles.label}>
-          Password
-        </label>
-        <input
-          type="password"
-          id="password"
-          className={styles.input}
-          value={user.password}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
-          style={error && user.password.length === 0 ? errColor : null}
-        />
-        {error && user.password.length === 0 && (
-          <p className={styles.error}>*Required Field</p>
-        )}
+      <div className={styles.para}>
+        <div className={styles.empty}></div>
+        <p>New to Musicart?</p>
+        <div className={styles.empty}></div>
       </div>
-
-      <div className={styles.btn}>
-        <button type="submit" className={styles.continue}>
-          {loading ? <Loader /> : "Continue"}
-        </button>
-      </div>
-
-      <p className={styles.term_condition}>
-        By continuing, you agree to Musicart privacy notice and conditions of
-        use
-      </p>
-      <ToastContainer />
-    </form>
+      <button
+        onClick={(e) => handelClickSetTab(e)}
+        className={styles.goto_register}
+      >
+        Create your Musicart account
+      </button>
+    </div>
   );
 };
 

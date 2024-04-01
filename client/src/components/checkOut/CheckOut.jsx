@@ -108,6 +108,9 @@ const CheckOut = () => {
       });
     } else {
       try {
+        toast.loading("Please wait", {
+          position: "top-center",
+        });
         const { data } = await axios.post(
           `http://localhost:5000/verified/addInvoiceData`,
           {
@@ -171,7 +174,7 @@ const CheckOut = () => {
                   <textarea
                     rows={3}
                     cols={37}
-                    placeholder="enter your address..."
+                    placeholder="Enter your address..."
                     value={address}
                     onChange={(e) => handelSetAddress(e)}
                     style={error && address.length === 0 ? errColor : null}
@@ -194,9 +197,7 @@ const CheckOut = () => {
                   onChange={(e) => handelSetPayment(e)}
                   style={error && address.length === 0 ? errColor : null}
                 >
-                  <option value="" hidden>
-                    Mode of payment
-                  </option>
+                  <option value="">Mode of payment</option>
                   <option value="Pay on Delivery">Pay on Delivery</option>
                   <option value="UPI">UPI</option>
                   <option value="Card">Card</option>

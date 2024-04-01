@@ -48,7 +48,7 @@
 
 .main_img img {
   height: 300px;
-  width: 330;
+  width: 330px;
 }
 
 .secondary_imgs {
@@ -68,6 +68,7 @@
 .inner_img img {
   height: 100px;
   width: 110px;
+  cursor: pointer;
 }
 
 .product_details {

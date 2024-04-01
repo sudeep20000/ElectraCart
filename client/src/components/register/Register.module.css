@@ -1,3 +1,28 @@
+.outer_div {
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 32%;
+}
+
+.inner_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid grey;
+  border-radius: 7px;
+  padding: 20px;
+}
+
+.form_container {
+  display: flex;
+  justify-content: center;
+}
+
 .form_name {
   font-size: 30px;
 }
@@ -6,8 +31,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 5px;
-  margin-top: 10px;
+  gap: 2px;
+  margin-top: 5px;
 }
 
 .label {
@@ -26,14 +51,14 @@
 
 .policy {
   font-size: 14px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .btn {
   display: flex;
   justify-content: center;
   align-items: end;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .continue {
@@ -53,12 +78,26 @@
 
 .term_condition {
   font-size: 14px;
-  margin-top: 15px;
+  margin-top: 10px;
+}
+
+.sign_in_msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.sign_in {
+  text-decoration: underline;
+  font-weight: normal;
+  cursor: pointer;
 }
 
 .error {
   display: flex;
   gap: 10px;
   color: red;
-  font-size: 15px;
+  font-size: 11px;
 }

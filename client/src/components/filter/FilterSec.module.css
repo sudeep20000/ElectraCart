@@ -81,6 +81,30 @@
   flex-direction: column;
 }
 
+.loader_container {
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not_found {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.not_found img {
+  height: 180px;
+}
+
+.not_found span {
+  font-weight: bold;
+}
+
 .items_grid_container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
