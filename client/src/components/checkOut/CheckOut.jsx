@@ -39,11 +39,12 @@ const CheckOut = () => {
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
     if (!details) return;
+    if (cartItems.length === 0) navigate("/");
     if (details.token) {
       setIsTokenPresent(true);
       setUserName(details.userName);
     }
-  }, []);
+  }, [cartItems.length, navigate]);
 
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
@@ -125,6 +126,7 @@ const CheckOut = () => {
           { headers }
         );
         console.log(data.invoice);
+        localStorage.setItem("placed", "true");
         navigate("/success");
       } catch (error) {
         console.log(error);
