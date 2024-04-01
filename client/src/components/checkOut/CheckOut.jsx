@@ -40,7 +40,6 @@ const CheckOut = () => {
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
     if (!details) return;
-    if (cartItems.length === 0) navigate("/");
     if (details.token) {
       setIsTokenPresent(true);
       setUserName(details.userName);
