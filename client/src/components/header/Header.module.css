@@ -54,3 +54,9 @@
 .adjust {
   padding-left: 120px;
 }
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .header {
+    display: none;
+  }
+}

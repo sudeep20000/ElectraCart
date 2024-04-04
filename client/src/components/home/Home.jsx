@@ -145,10 +145,17 @@ const Home = () => {
 
   const handelSetFilterObj = (filterObj) => {
     setFilteredObj(filterObj);
+    setTabOpen("default");
   };
 
   return (
     <div className={styles.home_div}>
+      {window.screen.width >= 320 && window.screen.width <= 425 ? (
+        <SearchBar
+          filteredObj={filteredObj}
+          handelSetFilterObj={handelSetFilterObj}
+        />
+      ) : null}
       <Header
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
@@ -164,10 +171,12 @@ const Home = () => {
       {tabOpen === "default" && (
         <div className={styles.main}>
           <Offer />
-          <SearchBar
-            filteredObj={filteredObj}
-            handelSetFilterObj={handelSetFilterObj}
-          />
+          {window.screen.width >= 320 && window.screen.width <= 425 ? null : (
+            <SearchBar
+              filteredObj={filteredObj}
+              handelSetFilterObj={handelSetFilterObj}
+            />
+          )}
           <FilterSec
             isLoading={isLoading}
             products={products}

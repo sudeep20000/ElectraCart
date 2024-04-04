@@ -6,7 +6,7 @@ const InvoicePage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
-    if (!details) navigate("/");
+    if (!details) navigate("/authenticate");
   }, [navigate]);
   return <Invoice />;
 };

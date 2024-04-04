@@ -23,9 +23,55 @@
   text-align: center;
 }
 
+.buy_now {
+  display: none;
+}
+
 .offer img {
   height: 155px;
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .offer {
+    width: 95vw;
+    height: 15vh;
+    position: relative;
+    border-radius: 7px;
+    background: linear-gradient(to right, #7286b4, #e794ce);
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+
+  .offer_heading {
+    font-size: 35px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .offer_heading p {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .buy_now {
+    display: block;
+    border-radius: 20px;
+    background-color: #310257;
+    color: #fff;
+    font-size: 8px;
+    padding: 6px 25px;
+  }
+
+  .offer img {
+    height: 130px;
+    position: absolute;
+    right: -10px;
+  }
 }

@@ -8,6 +8,7 @@ import NavBar from "../navbar/NavBar";
 import Footer from "../footer/Footer";
 import BASE_URL from "../../service/helper";
 import styles from "./CheckOut.module.css";
+import Images from "../../images/Images";
 
 const daysArray = [
   "Sunday",
@@ -143,6 +144,11 @@ const CheckOut = () => {
 
   return (
     <div className={styles.checkout}>
+      <div className={styles.logo}>
+        <img src={Images.image1} alt="icon" />
+        <span>Musicart</span>
+      </div>
+
       <Header
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
@@ -152,14 +158,19 @@ const CheckOut = () => {
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
         tabOpen={"seletedItem"}
-        cartItems={[]}
+        cartItems={cartItems}
       />
+
       <div className={styles.main}>
         <button
           className={styles.back_btn}
           onClick={(e) => handelBackToCart(e)}
         >
-          Back to cart
+          {window.screen.width >= 320 && window.screen.width <= 425 ? (
+            <img src={Images.image9} alt="backicon" />
+          ) : (
+            "Back to Cart"
+          )}
         </button>
 
         <div className={styles.sec_name}>
@@ -265,7 +276,10 @@ const CheckOut = () => {
 
           <div className={styles.final_place_order}>
             <div className={styles.first}>
-              <button onClick={(e) => handelPlaceOrder(e)}>
+              <button
+                onClick={(e) => handelPlaceOrder(e)}
+                className={styles.final_palce_btn}
+              >
                 Place your order
               </button>
               <p className={styles.final_term}>
@@ -296,6 +310,13 @@ const CheckOut = () => {
                 ₹{(totalMRP + deliveryCharge).toFixed(2)}
               </span>
             </div>
+
+            <button
+              onClick={(e) => handelPlaceOrder(e)}
+              className={styles.final_palce}
+            >
+              Place your order
+            </button>
           </div>
         </div>
       </div>

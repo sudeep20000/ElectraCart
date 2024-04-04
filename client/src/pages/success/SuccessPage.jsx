@@ -7,8 +7,8 @@ const SuccessPage = () => {
   useEffect(() => {
     const details = JSON.parse(localStorage.getItem("details"));
     const placed = localStorage.getItem("placed");
-    if (!details) navigate("/");
-    if (!placed) navigate("/");
+    if (!details) navigate("/authenticate");
+    if (!placed) navigate("/authenticate");
   }, [navigate]);
   return <Success />;
 };

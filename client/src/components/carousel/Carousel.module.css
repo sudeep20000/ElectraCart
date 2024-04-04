@@ -1,0 +1,48 @@
+.image {
+  border: 2px solid #310257;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image img {
+  height: 330px;
+  width: 100%;
+  border-radius: inherit;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #310257;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+}
+
+.custom-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #310257;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-dot:focus {
+  outline: none;
+}
+
+.custom-dot.slick-active {
+  background-color: #310257;
+}

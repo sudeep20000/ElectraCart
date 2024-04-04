@@ -95,6 +95,11 @@ const Invoice = () => {
 
   return (
     <div className={styles.invoice_main}>
+      <div className={styles.logo}>
+        <img src={Images.image1} alt="icon" />
+        <span>Musicart</span>
+      </div>
+
       <Header
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
@@ -113,10 +118,21 @@ const Invoice = () => {
             className={styles.back_btn}
             onClick={(e) => handelBackToHome(e)}
           >
-            Back to Home
+            {window.screen.width >= 320 && window.screen.width <= 425 ? (
+              <img src={Images.image9} alt="backicon" />
+            ) : (
+              "Back to Home"
+            )}
           </button>
 
           <div className={styles.sec_name}>
+            <span className={styles.invoice_img_container}>
+              <img
+                src={Images.image4}
+                alt="invoice"
+                className={styles.invoice_img}
+              />
+            </span>
             <span className={styles.title}>My Invoices</span>
           </div>
 
@@ -132,12 +148,13 @@ const Invoice = () => {
                     <div key={i} className={styles.main_card}>
                       <div className={styles.list_card}>
                         <div className={styles.left}>
-                          <img src={Images.image4} alt="icon" />
+                          <img src={Images.image4} alt="invoice" />
                           <div className={styles.user_info}>
                             <p className={styles.userName}>{obj.name}</p>
                             <p className={styles.address}>{obj.address}</p>
                           </div>
                         </div>
+
                         <span
                           className={styles.view_invoice}
                           onClick={() => handelChangeTabAndSetIndValue(i)}
@@ -164,10 +181,14 @@ const Invoice = () => {
             className={styles.back_btn}
             onClick={(e) => handelBackToInvoice(e)}
           >
-            Back to invoice
+            {window.screen.width >= 320 && window.screen.width <= 425 ? (
+              <img src={Images.image9} alt="backicon" />
+            ) : (
+              "Back to Invoice"
+            )}
           </button>
 
-          <div className={styles.sec_name}>
+          <div className={styles.individual_sec_name}>
             <span className={styles.title}>Invoice</span>
           </div>
 
@@ -188,7 +209,7 @@ const Invoice = () => {
                 </div>
               </div>
 
-              <div className={styles.horizontal_divider}></div>
+              <div className={styles.horizontal_div}></div>
 
               <div className={styles.payment_mode}>
                 <p className={styles.payment_title}>2. Payment method</p>
@@ -208,7 +229,7 @@ const Invoice = () => {
                 </div>
               </div>
 
-              <div className={styles.horizontal_divider}></div>
+              <div className={styles.horizontal_div}></div>
 
               <div className={styles.reviews}>
                 <p className={styles.review_title}>
@@ -246,7 +267,7 @@ const Invoice = () => {
                 </div>
               </div>
 
-              <div className={styles.horizontal_divider}></div>
+              <div className={styles.horizontal_div}></div>
             </div>
 
             <div className={styles.final_place_order}>
@@ -263,7 +284,7 @@ const Invoice = () => {
                   </p>
                 </div>
 
-                <div className={styles.horizontal_divider}></div>
+                <div className={styles.horizontal_div}></div>
               </div>
 
               <div className={styles.total_order}>

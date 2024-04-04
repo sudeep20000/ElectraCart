@@ -19,9 +19,17 @@
   cursor: pointer;
 }
 
+.topBuyNow {
+  display: none;
+}
+
 .description {
   font-weight: bold;
   font-size: 18px;
+}
+
+.mobile_main {
+  display: none;
 }
 
 .main_container {
@@ -167,4 +175,107 @@
   outline: none;
   cursor: pointer;
   background-color: #ffb800;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .seletedItem_div {
+    width: 95vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .back_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 0;
+    border: 2px solid lightgray;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .topBuyNow {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #ffd600;
+  }
+
+  .description {
+    display: none;
+  }
+
+  .main_container {
+    display: none;
+  }
+
+  .mobile_main {
+    display: block;
+    width: 100%;
+    margin: auto;
+  }
+
+  .details_sec {
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  .product_name {
+    font-size: 30px;
+  }
+
+  .features_list li {
+    padding-left: 10px;
+  }
+
+  .btn_sec {
+    margin-bottom: 10vh;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .addBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .buyNow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
 }

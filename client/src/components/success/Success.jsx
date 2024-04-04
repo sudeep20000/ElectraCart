@@ -28,6 +28,11 @@ const Success = () => {
 
   return (
     <div className={styles.success_main_div}>
+       <div className={styles.logo}>
+        <img src={Images.image1} alt="icon" />
+        <span>Musicart</span>
+      </div>
+      
       <NavBar
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}

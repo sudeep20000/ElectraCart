@@ -24,3 +24,21 @@
   border: 1px solid grey;
   outline: none;
 }
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .searchbar {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #310257;
+  }
+
+  .search_icon {
+    left: 30px;
+  }
+
+  .searchbar input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px 40px;
+  }
+}

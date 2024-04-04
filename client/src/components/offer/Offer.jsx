@@ -6,6 +6,7 @@ const Offer = () => {
     <div className={styles.offer}>
       <div className={styles.offer_heading}>
         <p>Grab upto 50% off on selected headphones</p>
+        <div className={styles.buy_now}>Buy Now</div>
       </div>
       <img src={Image.image2} alt="logo" />
     </div>

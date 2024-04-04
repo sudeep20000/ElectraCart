@@ -7,6 +7,7 @@ const Images = {
   image6: new URL("./noInvoice.png", import.meta.url).href,
   image7: new URL("./feedbackIcon.png", import.meta.url).href,
   image8: new URL("./no_search.png", import.meta.url).href,
+  image9: new URL("./back.png", import.meta.url).href,
 };
 
 export default Images;

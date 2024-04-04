@@ -9,6 +9,10 @@
   margin-bottom: 50px;
 }
 
+.logo {
+  display: none;
+}
+
 .back_btn {
   background-color: #310257;
   color: #fff;
@@ -157,6 +161,7 @@
 .img_container img {
   height: 70px;
   width: 70px;
+  border-radius: 7px;
 }
 
 .description {
@@ -231,7 +236,7 @@
   gap: 12px;
 }
 
-.final_place_order button {
+.final_palce_btn {
   font-size: 18px;
   padding: 7px 0;
   background-color: #ffd600;
@@ -282,9 +287,150 @@
   font-weight: bold;
 }
 
+.final_palce {
+  display: none;
+}
+
 .error {
   display: flex;
   gap: 10px;
   color: red;
   font-size: 12px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .main {
+    width: 95%;
+    margin-bottom: 10vh;
+  }
+
+  .logo {
+    display: block;
+    height: 7vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    padding: 0 20px;
+    background-color: #310257;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .logo span {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .back_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 0;
+    border: 2px solid lightgray;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .sec_name {
+    align-self: flex-start;
+    font-size: 25px;
+    text-decoration: none;
+    margin-left: 15px;
+  }
+
+  .title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .checkout_main_conatiner {
+    flex-direction: column;
+    align-self: center;
+    width: 92%;
+    gap: 20px;
+  }
+
+  .horizontal_divider {
+    width: 100%;
+    border-color: lightgray;
+  }
+
+  .user {
+    width: 100%;
+  }
+
+  .address {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .user_info {
+    margin-left: 15px;
+  }
+
+  .pyment_mode {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .select_container {
+    margin-left: 15px;
+  }
+
+  .payment_method {
+    padding: 5px 10px;
+    outline: none;
+    font-size: 13px;
+    color: grey;
+  }
+
+  .reviews {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .review_container {
+    width: auto;
+    margin-left: 15px;
+  }
+
+  .mini_placeorder {
+    display: none;
+  }
+
+  .final_place_order {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .first {
+    display: none;
+  }
+
+  .final_place_order {
+    border: none;
+  }
+
+  .final_palce {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px 0;
+    font-size: 18px;
+    background-color: #ffd600;
+    border-radius: 10px;
+    border: none;
+  }
 }

@@ -66,6 +66,13 @@
   cursor: pointer;
 }
 
+.divider {
+  width: 100vw;
+  height: 3px;
+  background-color: lightgray;
+  display: none;
+}
+
 .grid_main_container {
   width: 80vw;
   margin: auto;
@@ -125,4 +132,52 @@
   text-align: center;
   color: red;
   font-weight: bold;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .filter_sec {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    overflow-x: auto;
+    gap: 20px;
+  }
+
+  .view_btns {
+    display: none;
+  }
+
+  .filter_btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .filter_btns select {
+    background-color: lightgrey;
+    border-radius: 7px;
+  }
+
+  .sort_container select {
+    border-radius: 7px;
+    border: 1px solid grey;
+  }
+
+  .divider {
+    display: block;
+  }
+
+  .grid_main_container {
+    width: 95vw;
+    margin-bottom: 10vh;
+  }
+
+  .items_grid_container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 25px 20px;
+  }
 }

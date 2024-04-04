@@ -151,6 +151,8 @@ const FilterSec = ({
         </div>
       </div>
 
+      <div className={styles.divider}></div>
+
       {isLoading ? (
         <div className={styles.loader_container}>
           <Loader />

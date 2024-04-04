@@ -87,7 +87,11 @@ const ItemCard = ({
         <img src={product.images[0]} alt={product.model} />
         {isTokenPresent && (
           <div className={styles.add_cart} onClick={(e) => handelAddToCart(e)}>
-            <MdAddShoppingCart color="green" size={24} />
+            {window.screen.width >= 320 && window.screen.width <= 425 ? (
+              <MdAddShoppingCart color="green" size={18} />
+            ) : (
+              <MdAddShoppingCart color="green" size={24} />
+            )}
           </div>
         )}
       </div>

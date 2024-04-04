@@ -10,15 +10,41 @@
   font-family: "Roboto";
 }
 
-::-webkit-scrollbar {
-  width: 7px;
+.scrollable-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #caceca;
-  border-radius: 6px;
+.scrollable-container {
+  overflow-x: auto;
+  position: relative;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: grey;
+.scrollable-container::before,
+.scrollable-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scrollable-container::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.scrollable-container::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }

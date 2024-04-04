@@ -11,6 +11,7 @@ import Footer from "../footer/Footer";
 import BASE_URL from "../../service/helper";
 import Images from "../../images/Images";
 import styles from "./Cart.module.css";
+import SearchBar from "../searchbar/SearchBar";
 
 const Cart = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);
@@ -126,6 +127,10 @@ const Cart = () => {
 
   return (
     <div className={styles.cart_div}>
+      <div className={styles.logo}>
+        <img src={Images.image1} alt="icon" />
+        <span>Musicart</span>
+      </div>
       <Header
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
@@ -143,7 +148,11 @@ const Cart = () => {
           className={styles.back_btn}
           onClick={(e) => handelBackToProduct(e)}
         >
-          Back to products
+          {window.screen.width >= 320 && window.screen.width <= 425 ? (
+            <img src={Images.image9} alt="backicon" />
+          ) : (
+            "Back to products"
+          )}
         </button>
 
         <div className={styles.sec_name}>
@@ -160,9 +169,103 @@ const Cart = () => {
         ) : (
           <>
             {cartItems.length > 0 ? (
-              <div className={styles.main_cart_info}>
-                <div className={styles.cart_info}>
-                  <div className={styles.horizontal_divider}></div>
+              <>
+                <div className={styles.main_cart_info}>
+                  <div className={styles.cart_info}>
+                    <div className={styles.horizontal_divider}></div>
+                    <div className={styles.product_info}>
+                      {cartItems.map((item, i) => (
+                        <div className={styles.details} key={i}>
+                          <div className={styles.img_container}>
+                            <img src={item.images[0]} alt={item.model} />
+                          </div>
+                          <div className={styles.product_brand}>
+                            <span className={styles.product_name}>
+                              {item.brand} {item.model}
+                            </span>
+                            <span className={styles.color}>
+                              Color : {item.color}
+                            </span>
+                            <span className={styles.availability}>
+                              {item.available ? "in Stock" : "out of Stock"}
+                            </span>
+                          </div>
+                          <div className={styles.price}>
+                            <span className={styles.price_title}>Price</span>
+                            <span className={styles.amount}>₹{item.price}</span>
+                          </div>
+                          <div className={styles.quantity}>
+                            <span>Quantity</span>
+                            <select
+                              value={itemCount[item.model]}
+                              onChange={(e) =>
+                                handleChangeOption(e, i, item.model)
+                              }
+                            >
+                              {Array.from({ length: 8 }, (_, i) => i + 1).map(
+                                (num, i) => (
+                                  <option value={num} key={i}>
+                                    {num}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </div>
+                          <div className={styles.total}>
+                            <span>Total</span>
+                            <span>
+                              ₹
+                              {itemCount
+                                ? calcTotalPratItem(item.model, item.price)
+                                : 0}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className={styles.horizontal_divider}></div>
+                    <div className={styles.count_sec}>
+                      <p>{cartItems.length} item</p>
+                      <p>₹{totalMRP.toFixed(2)}</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.vertical_divider}></div>
+
+                  <div className={styles.price_details}>
+                    <div className={styles.discount_sec}>
+                      <p className={styles.sec_title}>PRICE DETAILS</p>
+                      <div className={styles.amountCal}>
+                        <p>
+                          <span>Total MRP</span>
+                          <span>₹{totalMRP.toFixed(2)}</span>
+                        </p>
+                        <p>
+                          <span>Discount on MRP</span>
+                          <span>₹0</span>
+                        </p>
+                        <p>
+                          <span>Convenience Fee</span>
+                          <span>₹{convenienceFee.toFixed(2)}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className={styles.place_order}>
+                      <div className={styles.total_amount}>
+                        <p>Total Amount</p>
+                        <span>₹{totalMRP + convenienceFee}</span>
+                      </div>
+                      <button
+                        className={styles.place_order_btn}
+                        onClick={(e) => gotoCheckOut(e)}
+                      >
+                        PLACE ORDER
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.mobile_cart}>
                   <div className={styles.product_info}>
                     {cartItems.map((item, i) => (
                       <div className={styles.details} key={i}>
@@ -213,47 +316,24 @@ const Cart = () => {
                       </div>
                     ))}
                   </div>
-                  <div className={styles.horizontal_divider}></div>
                   <div className={styles.count_sec}>
-                    <p>{cartItems.length} item</p>
-                    <p>₹{totalMRP.toFixed(2)}</p>
+                    <p>Conv Fee : ₹{convenienceFee.toFixed(2)}</p>
+                    <p className={styles.totalPrice}>
+                      Amount : ₹{totalMRP.toFixed(2)}
+                    </p>
                   </div>
+                  <div className={styles.horizontal_divider}></div>
+                  <p className={styles.grantTotal}>
+                    Total Amount : ₹{(totalMRP + convenienceFee).toFixed(2)}
+                  </p>
+                  <button
+                    className={styles.place_order_btn}
+                    onClick={(e) => gotoCheckOut(e)}
+                  >
+                    PLACE ORDER
+                  </button>
                 </div>
-
-                <div className={styles.vertical_divider}></div>
-
-                <div className={styles.price_details}>
-                  <div className={styles.discount_sec}>
-                    <p className={styles.sec_title}>PRICE DETAILS</p>
-                    <div className={styles.amountCal}>
-                      <p>
-                        <span>Total MRP</span>
-                        <span>₹{totalMRP.toFixed(2)}</span>
-                      </p>
-                      <p>
-                        <span>Discount on MRP</span>
-                        <span>₹0</span>
-                      </p>
-                      <p>
-                        <span>Convenience Fee</span>
-                        <span>₹{convenienceFee.toFixed(2)}</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className={styles.place_order}>
-                    <div className={styles.total_amount}>
-                      <p>Total Amount</p>
-                      <span>₹{totalMRP + convenienceFee}</span>
-                    </div>
-                    <button
-                      className={styles.place_order_btn}
-                      onClick={(e) => gotoCheckOut(e)}
-                    >
-                      PALCE ORDER
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </>
             ) : (
               <span className={styles.empty_msg}>
                 <img src={Images.image5} alt="empty cart" />
