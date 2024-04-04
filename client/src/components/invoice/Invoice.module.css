@@ -447,6 +447,7 @@
   }
 
   .invoice_container {
+    height: 70%;
     gap: 40px;
   }
 

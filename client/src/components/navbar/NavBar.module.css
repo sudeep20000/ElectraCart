@@ -176,7 +176,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .nav_container {
-    height: 9vh;
+    height: 8vh;
     width: 100vw;
     position: fixed;
     bottom: 0;
