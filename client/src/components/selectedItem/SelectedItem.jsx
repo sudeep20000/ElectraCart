@@ -100,6 +100,9 @@ const SelecteItem = ({ item, handelSeletedItem, handleComponentMount }) => {
     };
 
     try {
+      toast.loading(`just a moment...`, {
+        position: "top-center",
+      });
       await axios.post(
         `${BASE_URL}/verified/addItem`,
         {
