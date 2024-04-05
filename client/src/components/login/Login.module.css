@@ -119,16 +119,19 @@
     width: 90%;
     justify-content: flex-start;
   }
+
   .inner_div {
     width: 100%;
     padding: 15px;
   }
+
   .welcome {
     align-self: flex-start;
     font-size: 45px;
-    margin-top: 40px;
+    margin-top: 15px;
     color: #310257;
   }
+
   .query_container {
     display: flex;
     justify-content: flex-start;
@@ -136,13 +139,16 @@
     gap: 4px;
     margin-bottom: 20px;
   }
+
   .query_container .sign_in {
     font-weight: bold;
     font-size: 20px;
   }
+
   .para p {
     font-size: 14px;
   }
+
   .name {
     gap: 5px;
   }

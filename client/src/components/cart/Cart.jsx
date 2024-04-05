@@ -11,7 +11,6 @@ import Footer from "../footer/Footer";
 import BASE_URL from "../../service/helper";
 import Images from "../../images/Images";
 import styles from "./Cart.module.css";
-import SearchBar from "../searchbar/SearchBar";
 
 const Cart = () => {
   const [isTokenPresent, setIsTokenPresent] = useState(false);

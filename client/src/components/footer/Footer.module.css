@@ -8,6 +8,16 @@ footer {
   font-size: 17px;
 }
 
+.mobile_footer {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #310257;
+  color: white;
+  font-size: 17px;
+}
+
 @media screen and (min-width: 320px) and (max-width: 425px) {
   footer {
     display: none;

@@ -158,7 +158,9 @@ const CheckOut = () => {
         isTokenPresent={isTokenPresent}
         onSetToken={handelTokenPresent}
         tabOpen={"seletedItem"}
-        cartItems={cartItems}
+        cartItems={new Array(
+          Object.values(countsObj).reduce((acc, curr) => acc + curr, 0)
+        ).fill(1)}
       />
 
       <div className={styles.main}>
