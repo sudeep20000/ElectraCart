@@ -210,7 +210,7 @@ const CheckOut = () => {
                   className={styles.payment_method}
                   value={paymentMethod}
                   onChange={(e) => handelSetPayment(e)}
-                  style={error && address.length === 0 ? errColor : null}
+                  style={error && paymentMethod.length === 0 ? errColor : null}
                 >
                   <option value="">Mode of payment</option>
                   <option value="Pay on Delivery">Pay on Delivery</option>
